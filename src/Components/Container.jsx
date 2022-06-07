@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import Todo from "./Todo";
+import "./Container.css";
 
 function Container() {
     const [todo, setTodo] = useState([])
@@ -7,24 +8,21 @@ function Container() {
 
     const handleSubmit =(e)=> {
         e.preventDefault();
-        // const {target}  = e;
         // setTodo(todo =>({...todo, input}));
         setTodo([...todo, input]);
         setInput('');
     }
 
     return (
-        <div>
+        <div className={"container"}>
+            <h1>Todo List</h1>
             <form onSubmit={handleSubmit}>
-                <input type="text" onChange={event => {
-                    setInput(event.target.value)
-                    console.log(input)
-                }}/>
-                <button type={"submit"}> Ajouter </button>
+                <input type="input" value={input} onChange={event => setInput(event.target.value)}/>
+                {input ? <button className={"btn-add"} type={"submit"}> <i className="fa-solid fa-plus"></i> </button> : <button type={"submit"} className={"btn-add"} disabled>  <i className="fa-solid fa-plus"></i> </button>}
             </form>
             <ul>
-                {/*{todo.map((n, i) => <Todo text={n} key={i}/> )}*/}
-                {todo && todo.map((n, i) => <li key={i}>{n}</li> )}
+                {todo.map((n, i) => <Todo text={n} key={i}/>)}
+                {/*{todo && todo.map((n, i) => <li key={i}>{n}</li> )}*/}
             </ul>
         </div>
     );
