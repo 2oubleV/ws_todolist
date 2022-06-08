@@ -6,12 +6,10 @@ function Todo(props) {
 
     return (
         <div className={"todo"}>
+            <input  className="checkmark" type="checkbox" />
+
             <li key={props.key}>{props.text}</li>
-            <label className={"box"}>
-                <input  className="checkmark" type="checkbox" />
-                {/*<span></span>*/}
-            </label>
-            <button onClick={() => props.handleRemove(props.key)}> <i className={"fa-solid fa-trash-can"}></i></button>
+                <button onClick={() => props.handleRemove(props.key)}> <i className={"fa-solid fa-trash-can"}></i></button>
         </div>
     );
 }
