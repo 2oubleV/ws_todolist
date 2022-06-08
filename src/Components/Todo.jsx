@@ -8,12 +8,10 @@ function Todo(props) {
         <div className={"todo"}>
             <li key={props.key}>{props.text}</li>
             <label className={"box"}>
-                <input type="checkbox" />
-                <span className="checkmark"></span>
+                <input  className="checkmark" type="checkbox" />
+                {/*<span></span>*/}
             </label>
-
-
-            <button> <i className={"fa-solid fa-trash-can"}></i></button>
+            <button onClick={() => props.handleRemove(props.key)}> <i className={"fa-solid fa-trash-can"}></i></button>
         </div>
     );
 }

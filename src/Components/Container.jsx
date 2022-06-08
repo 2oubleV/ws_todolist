@@ -13,6 +13,12 @@ function Container() {
         setInput('');
     }
 
+    const handleRemove = (id) => {
+        const newTodo = [...todo]
+        newTodo.splice(id, 1)
+        setTodo(newTodo)
+    }
+
     return (
         <div className={"container"}>
             <h1>Todo List</h1>
@@ -21,7 +27,7 @@ function Container() {
                 {input ? <button className={"btn-add"} type={"submit"}> <i className="fa-solid fa-plus"></i> </button> : <button type={"submit"} className={"btn-add"} disabled>  <i className="fa-solid fa-plus"></i> </button>}
             </form>
             <ul>
-                {todo.map((n, i) => <Todo text={n} key={i}/>)}
+                {todo.map((n, i) => <Todo text={n} key={i} handleRemove={handleRemove}/>)}
                 {/*{todo && todo.map((n, i) => <li key={i}>{n}</li> )}*/}
             </ul>
         </div>
